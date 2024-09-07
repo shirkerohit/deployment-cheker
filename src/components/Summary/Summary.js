@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import AppContext from "../../context/appcontext";
 import allQuestions from "../../context/questions";
 
@@ -9,6 +9,9 @@ const Summary = () => {
 
     const questions = allQuestions;
     const answers = finalSummary.answers ?? [];
+    const savedAt = finalSummary.savedAt ?? null;
+
+    console.log(finalSummary);
 
     const [releaseSummary, setReleaseSummary] = useState("");
     const [releaseNote, setReleaseNote] = useState("");
@@ -27,13 +30,17 @@ const Summary = () => {
     }
 
     const copyReleaseNote = () => {
-        let releaseNote = questions.map((question, index) => {
+        let tempReleaseNote = [];
+        questions.map((question, index) => {
             if (question.isReleaseNoteKey) {
-                return question.summaryKeyValue + " : " + answers[index] + "\n";
+                tempReleaseNote.push(question.summaryKeyValue + " : " + answers[index] + "\n");
             }
-        }).join('');
-        setReleaseNote(releaseNote);
-        navigator.clipboard.writeText(releaseNote);
+            return question;
+        });
+        console.log('tempReelase', tempReleaseNote);
+        tempReleaseNote = tempReleaseNote.join('');
+        setReleaseNote(tempReleaseNote);
+        navigator.clipboard.writeText(tempReleaseNote);
         alert('Copied!');
     }
 
@@ -45,6 +52,7 @@ const Summary = () => {
             answers: answers,
             releaseNote: releaseNote,
             releaseSummary: releaseSummary,
+            savedAt: new Date().toUTCString(),
         };
 
         saveLocalStorage('release-history', storeObject);
@@ -54,7 +62,7 @@ const Summary = () => {
 
     const saveLocalStorage = (keyName, value) => {
         let savedValue = JSON.parse(localStorage.getItem(keyName));
-        if (savedValue === null || savedValue == []) {
+        if (savedValue === null || savedValue === undefined || (Array.isArray(savedValue) && savedValue.length <= 0)) {
             savedValue = [];
         }
 
@@ -72,7 +80,12 @@ const Summary = () => {
                 <div className="text-center">
                     <h1 className="text-xl underline">Release Checklist Summary</h1>
                 </div>
-            </div >
+            </div>
+            <div className="flex justify-center">
+                {savedAt ? <div className="text-center">
+                    <h6 className="text-sm">({savedAt}) </h6>
+                </div> : ""}
+            </div>
             <div className="bg-white shadow px-5 py-5" id="summary">
                 {questions.map((question, index) => (
                     <div className="mb-2" key={index}>

@@ -11,7 +11,7 @@ const questions = [
     {
         id: 2,
         question: "What is the purpose of the build?",
-        placehoder: "Explain in short what is this build about",
+        placehoder: "Explain in short what is this build about like release summary",
         summaryKeyValue: "Requirement",
         isReleaseKey: true,
         isReleaseNoteKey: true,

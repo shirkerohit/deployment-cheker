@@ -26,9 +26,11 @@ const History = () => {
 
     const loadSummary = (item) => {
         const answers = Object.values(item)[0]['answers'];
+        const savedAt = Object.values(item)[0]['savedAt'];
         // const questions = JSON.stringify(Object.values(item)[0]['questions']);
         setSummary({
             answers: Array.from(answers),
+            savedAt: savedAt
         });
         setActiveComponent('summary');
     }
@@ -53,6 +55,7 @@ const History = () => {
                             <tr>
                                 <th>Release No</th>
                                 <th>Details</th>
+                                <th>Saved At</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,10 +65,11 @@ const History = () => {
                                         <tr>
                                             <td>{Object.keys(item)[0]}</td>
                                             <td>
-                                                <a href="#" onClick={() => loadSummary(item)} className="text-blue-600 hover:text-blue-800">
+                                                <button onClick={() => loadSummary(item)} className="text-blue-600 hover:text-blue-800">
                                                     View Details
-                                                </a>
+                                                </button>
                                             </td>
+                                            <td>{item[Object.keys(item)[0]]['savedAt'] ?? "-"}</td>
                                         </tr>
                                     )
                                 })

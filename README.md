@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Deployment checker Demo Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Deployment checker Demo Application! This React-based web app allows you to easily create, store, and retrieve release notes. The application guides you through a series of questions and generates a neatly formatted summary that you can copy and paste wherever you need. It also offers local storage functionality for convenience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive Questionnaire**: Go through a set of questions to detail your release notes.
+- **Formatted Summary**: Receive a well-organized summary of your release notes that you can copy to your clipboard.
+- **Local Storage**: Save your notes locally so you can retrieve them later without re-entering information.
+- **User-Friendly Interface**: Simple and intuitive design to streamline the note creation process.
 
-### `npm start`
+## React Features Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This application utilizes several key React features to manage state and enhance functionality:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Component State**: 
+  - The app uses local component state to manage user inputs and dynamically update the UI based on the user's responses to the questionnaire.
+  - State hooks (`useState`) are employed to keep track of form data and provide real-time feedback as users fill out the questionnaire.
 
-### `npm test`
+- **Reducers**:
+  - For more complex state management, particularly when handling multiple related pieces of state, the app uses `useReducer` to manage state transitions. 
+  - This pattern helps in managing actions and state updates in a more predictable manner, making it easier to handle complex state logic.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+To get started with the Release Notes Demo Application, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository**
+    ```bash
+    git clone https://github.com/shirkerohit/deployment-cheker
+    cd deployment-cheker
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Run the Application**
+    ```bash
+    npm start
+    ```
 
-### `npm run eject`
+   This will start the development server and open the application in your default browser. You can now interact with the app and start creating release notes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Build and Deployment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To build the application for production, use the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run build
